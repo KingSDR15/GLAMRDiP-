@@ -1,0 +1,578 @@
+/* ---------- GENERAL RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Inter font import (add once in the <head> if you don't already load Inter) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root{
+  --instr-bg: #fbfdff;        /* background of instruction box */
+  --instr-border: rgba(37,99,235,0.06);
+  --instr-accent: #2563eb;    /* accent/heading color */
+  --text: #102030;
+  --muted: #556174;
+  --radius: 10px;
+}
+
+/* ---------- INSTRUCTIONS BLOCK ---------- */
+.instructions{
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, var(--instr-bg), #f3f7ff);
+  border: 1px solid var(--instr-border);
+  border-radius: var(--radius);
+  padding: 14px;
+  color: var(--text);
+  box-shadow: 0 8px 20px rgba(16,40,130,0.04);
+  max-width: 900px;
+  margin: 14px 0;
+}
+
+.instructions > strong{
+  display: block;
+  font-weight: 600;
+  color: var(--instr-accent);
+  margin-bottom: 8px;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+
+.instructions .body {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+  margin-top: 6px;
+}
+
+.instructions .body ol{
+  margin: 8px 0 0 18px;
+  padding: 0;
+  color: var(--muted);
+}
+.instructions .body ol li{
+  margin: 6px 0;
+}
+
+@media (max-width: 520px){
+  .instructions{padding:12px}
+  .instructions > strong{font-size:14px}
+  .instructions .body{font-size:13.5px}
+}
+
+/* ---------- BASE TYPOGRAPHY & LAYOUT ---------- */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f9fc;
+  color: #333;
+}
+
+/* ---------- GLOBAL IMAGE RULES ---------- */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- IMAGE GRID (20 pictures) ---------- */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.image-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* ---------- FORM STYLES (base) ---------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #fff;
+}
+
+form textarea {
+  resize: none;
+}
+
+form > *:last-child {
+  margin-top: auto;
+}
+
+/* ---------- BUTTONS ---------- */
+button,
+input[type="submit"] {
+  min-height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-glow {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #219ff3;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+}
+
+.btn-glow:hover {
+  background: #1976d2;
+  box-shadow: 0 4px 20px rgba(25, 118, 210, 0.6);
+}
+
+/* ---------- CONTACT ICONS ---------- */
+.contact-icons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.contact-icons i.fas.fa-envelope {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.contact-icons a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.mail-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.mail-button i {
+  font-size: 1.3rem;
+}
+
+.mail-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #43e97b, #38f9d7);
+}
+
+/* ---------- SUCCESS PAGE ---------- */
+#success {
+  text-align: center;
+  padding: 20px;
+}
+
+/* ---------- TERMS & CONDITIONS ---------- */
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: #444;
+  background: #ffffff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.terms:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.terms input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #bbb;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.terms input[type="checkbox"]:checked {
+  background-color: #1f80e7;
+  border-color: #2c6080;
+}
+
+.terms input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  position: absolute;
+  left: 3px;
+  top: -1px;
+  font-size: 14px;
+}
+
+.terms a {
+  color: #950000;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.terms a:hover {
+  border-bottom: 1px solid #64183a;
+}
+
+/* ---------- LOADER (Centered Glow Spinner) ---------- */
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite, glowPulse 1.5s ease-in-out infinite;
+  z-index: 9999;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.6),
+                0 0 20px rgba(33, 150, 243, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(33, 150, 243, 0.9),
+                0 0 40px rgba(33, 150, 243, 0.6);
+  }
+}
+
+/* ---------- LOADING OVERLAY ---------- */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.loading-overlay .loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #2196f3;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite, glowPulse 1.5s ease-in-out infinite;
+}
+
+/* ---------- 3D FLOATING BACKGROUND ---------- */
+.floating-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(100, 181, 246, 0.3);
+  animation: float 12s infinite ease-in-out;
+}
+
+.circle:nth-child(1) {
+  width: 150px;
+  height: 150px;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.circle:nth-child(2) {
+  width: 200px;
+  height: 200px;
+  right: 15%;
+  animation-delay: 3s;
+}
+
+.circle:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  bottom: 20%;
+  left: 50%;
+  animation-delay: 6s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-60px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* ---------- MAIN CONTENT (GLASS STYLE) ---------- */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 900px;
+  margin: 30px auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- HEADINGS ---------- */
+h1 {
+  text-align: center;
+  color: #2196f3;
+  margin-bottom: 10px;
+}
+
+h3 {
+  margin-top: 20px;
+  color: #1565c0;
+}
+
+/* ---------- FILE UPLOAD GRID ---------- */
+.image-upload-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.image-upload-grid input {
+  padding: 8px;
+  background: #fafafa;
+  border: 1px dashed #bbb;
+  border-radius: 8px;
+}
+
+.image-upload-grid img {
+  width: 100%;
+  height: auto;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+.image-upload-grid input[type="file"] {
+  font-size: 12px;
+}
+
+/* ---------- MODAL ---------- */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  button, input[type="submit"], .btn-glow {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .glass {
+    margin: 10px;
+    padding: 15px;
+  }
+  .image-upload-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+  .modal-content {
+    padding: 15px;
+  }
+}
+
+/* ---------- Classic + Mobile-first Form Styles ---------- */
+.collab-form.classic {
+  max-width: 880px;
+  margin: 16px auto 48px;
+  padding: 22px;
+  background: linear-gradient(180deg,#ffffff,#fbfbfb);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(10,20,24,0.06);
+  color: #122222;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form-head { text-align:center; margin-bottom:14px; }
+.form-head h2 { margin:0; font-size:22px; letter-spacing:0.2px; }
+.form-head .lead { margin:6px 0 0; color:#556; font-size:13px; }
+
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.form-group { display:flex; flex-direction:column; }
+.form-group label { font-size:13px; color:#233; margin-bottom:6px; font-weight:600; }
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+  padding:12px 14px;
+  font-size:15px;
+  border-radius:10px;
+  border:1px solid #e3e6e6;
+  background:#fff;
+  color:#0c1a1a;
+  transition:box-shadow .12s ease, border-color .12s ease;
+}
+
+.form-group textarea { min-height:80px; resize:vertical; }
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline:none;
+  border-color:#9cc;
+  box-shadow:0 6px 18px rgba(0,124,140,0.06);
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.payment-card {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 14px;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid rgba(15,20,20,0.04);
+  cursor:pointer;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+.payment-card .pc-left { font-weight:700; color:#102020; font-size:15px; }
+.payment-card .pc-right { font-size:12px; color:#667; }
+
+input[type="radio"][name="pm"]:checked + label.payment-card {
+  border-color: rgba(0,120,140,0.25);
+  box-shadow: 0 16px 30px rgba(6,40,45,0.06);
+  transform: translateY(-4px);
+}
+
+.payment-card:focus {
+  outline: 3px solid rgba(0,120,140,0.10);
+  outline-offset: 2px;
+  transform: translateY(-3px);
+}
+
+.form-actions {
+  display:flex;
+  gap:12px;
+  justify-content: flex-end;
+  margin-top:18px;
+}
+
+.btn {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  border:1px solid transparent;
+  text-decoration:none;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg,#0a0a0a,#3a3a3a);
+  color:#fff;
+  border-color: rgba(0,0,0,0.08);
+}
+
+.btn-outline {
+  background:transparent;
+  color:#0d1a1a;
+  border-color: rgba(6,20,20,0.06);
+}
+
+@media (max-width: 900px) {
+  .field-grid { grid-template-columns: 1fr; }
+  .form-head h2 { font-size:20px; }
+  .payment-grid { grid-template-columns: repeat(2, 1fr); gap:10px; }
+  .form-actions { flex-direction: column-reverse; align-items: stretch; }
+  .btn { width:100%; justify-content:center; padding:12px; }
+}
+
+@media (max-width: 420px) {
+  .collab-form.classic { padding:16px; margin:8px; }
+  .form-head .lead { font-size:12px; }
+  .form-group input, .form-group textarea { font-size:14px; padding:10px; }
+  .payment-grid { grid-template-columns: repeat(1, 1fr); }
+}

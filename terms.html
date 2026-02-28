@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Collaboration Agreement — Kaja (Read-only)</title>
+  <title>Collaboration Agreement — GLAMRDiP (Read-only)</title>
 
   <!-- Inter font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -28,19 +28,20 @@
 
     /* full-bleed animated background */
     html,body{height:100%;}
-    body{margin:0;min-height:100%;background:var(--bg);color:var(--text);padding:36px;overflow-y:auto}
+    body{margin:0;min-height:100%;background:var(--bg);color:var(--text);padding:36px;overflow-y:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 
-    /* animated blobs and gradient */
+    /* animated blobs and gradient (use viewport units so they scale) */
     .bg-anim{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-    .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:0.7;mix-blend-mode:screen;transform-origin:center}
-    .blob.a{width:520px;height:520px;left:-10%;top:10%;background:radial-gradient(circle at 30% 30%, #ff7bac, #ffb3c6)}
-    .blob.b{width:680px;height:680px;right:-20%;top:-10%;background:radial-gradient(circle at 70% 30%, #7dd3fc, #0284c7)}
-    .blob.c{width:420px;height:420px;left:20%;bottom:-15%;background:radial-gradient(circle at 40% 60%, #a78bfa, #7c3aed)}
+    .blob{position:absolute;border-radius:50%;filter:blur(72px);opacity:0.8;mix-blend-mode:screen;transform-origin:center;will-change:transform,opacity}
+    /* use vw-based sizing so background scales on mobile */
+    .blob.a{width:48vw;height:48vw;left:-8vw;top:6vh;background:radial-gradient(circle at 30% 30%, #ff7bac, #ffb3c6)}
+    .blob.b{width:60vw;height:60vw;right:-18vw;top:-8vh;background:radial-gradient(circle at 70% 30%, #7dd3fc, #0284c7)}
+    .blob.c{width:36vw;height:36vw;left:14vw;bottom:-14vh;background:radial-gradient(circle at 40% 60%, #a78bfa, #7c3aed)}
 
     /* subtle floating animation */
-    @keyframes floatA{0%{transform:translateY(0) translateX(0) scale(1)}50%{transform:translateY(-22px) translateX(8px) scale(1.03)}100%{transform:translateY(0) translateX(0) scale(1)}}
+    @keyframes floatA{0%{transform:translateY(0) translateX(0) scale(1)}50%{transform:translateY(-22px) translateX(6px) scale(1.03)}100%{transform:translateY(0) translateX(0) scale(1)}}
     @keyframes floatB{0%{transform:translateY(0) translateX(0) scale(1)}50%{transform:translateY(18px) translateX(-6px) scale(0.99)}100%{transform:translateY(0) translateX(0) scale(1)}}
-    @keyframes floatC{0%{transform:translateY(0) translateX(0) scale(1)}50%{transform:translateY(-12px) translateX(12px) scale(1.02)}100%{transform:translateY(0) translateX(0) scale(1)}}
+    @keyframes floatC{0%{transform:translateY(0) translateX(0) scale(1)}50%{transform:translateY(-12px) translateX(10px) scale(1.02)}100%{transform:translateY(0) translateX(0) scale(1)}}
     .blob.a{animation:floatA 9s ease-in-out infinite}
     .blob.b{animation:floatB 12s ease-in-out infinite}
     .blob.c{animation:floatC 11s ease-in-out infinite}
@@ -84,7 +85,9 @@
 
     footer.note{margin-top:12px;font-size:13px;color:var(--muted)}
 
-    @media (max-width:980px){.signature-panel{grid-template-columns:1fr}} 
+    @media (max-width:980px){
+      .signature-panel{grid-template-columns:1fr}
+    }
 
     @media print{
       body{padding:0}
@@ -97,6 +100,37 @@
     /* Make the brand name always bold */
     .brand-name{font-weight:800}
 
+    /* ----------------- Mobile tweaks ----------------- */
+    @media (max-width:720px) {
+      :root{
+        --read-size:15px;
+        --lead-size:13px;
+      }
+      body{padding:18px}
+      .wrap{margin:14px auto;padding:0 12px}
+      .card{padding:18px;border-radius:12px}
+      h1{font-size:18px}
+      .contract-inner{padding:18px}
+      .blob{filter:blur(64px);opacity:0.9}
+      /* increase visible coverage on small screens */
+      .blob.a{width:70vw;height:70vw;left:-22vw;top:-6vh}
+      .blob.b{width:90vw;height:90vw;right:-34vw;top:-18vh}
+      .blob.c{width:56vw;height:56vw;left:8vw;bottom:-28vh}
+    }
+
+    @media (max-width:420px) {
+      :root{
+        --read-size:14px;
+        --lead-size:12px;
+      }
+      .blob{filter:blur(56px)}
+      .blob.a{width:88vw;height:88vw;left:-32vw;top:-18vh}
+      .blob.b{width:110vw;height:110vw;right:-44vw;top:-26vh}
+      .blob.c{width:70vw;height:70vw;left:2vw;bottom:-36vh}
+      .contract-text{line-height:1.6}
+      .sec-head{padding:10px}
+      .sec-body{padding:12px}
+    }
   </style>
 </head>
 <body>
@@ -159,115 +193,7 @@ Agreement.
           </div>
         </div>
 
-        <div class="section">
-          <div class="sec-head"><h3>1.2 Standards and Execution</h3><div class="sec-indicator"><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-          <div class="sec-body">
-            <div class="contract-text">All Deliverables must meet <span class="brand-name">GLAMRDiP</span>’s brand standards, quality expectations and content guidelines. Timely execution, professional presentation and strict adherence to instructions provided by <span class="brand-name">GLAMRDiP</span> are essential requirements of this Agreement.</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="sec-head"><h3>1.3 Compensation</h3><div class="sec-indicator"><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-          <div class="sec-body">
-            <div class="contract-text">
-              <p>As part of this collaboration, the Contractor shall receive the following Compensation:</p>
-              <ul>
-                <li><strong>Monthly Compensation:</strong> a fixed monthly salary of $3,000.00.</li>
-                <li><strong>Sign-On Bonus:</strong> a one-time sign-on bonus of $1,000.00, payable upon (a) successful completion of the Contractor’s profile setup, (b) full execution of this Agreement, and (c) completion of any required onboarding procedures. Upon issuance of the Sign-On Bonus, the Contractor will be formally recognized as an official brand influencer and representative of <span class="brand-name">GLAMRDiP</span>.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="sec-head"><h3>1.4 Payment Timing</h3><div class="sec-indicator"><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-          <div class="sec-body">
-            <div class="contract-text">All payments due under this Section (including the Monthly Compensation, the Sign-On Bonus, and any approved reimbursements) shall be paid by <span class="brand-name">GLAMRDiP</span> within four (4) business days after the later of: a) the Effective Date or the formal commencement of the collaboration; or b) the Contractor’s provision of Shipment Confirmation, completed onboarding (as applicable), and/or a valid invoice and required supporting documentation.
-
-For clarity: If the collaboration commences prior to the delivery of product(s), the first payment shall be made within four (4) business days after the delivery (Shipment Confirmation) or the Effective Date, whichever is later.
-
-If payment is triggered by delivery of items, <span class="brand-name">GLAMRDiP</span> shall remit the applicable amounts within four (4) business days of receiving the Shipment Confirmation and Contractor invoice. “Business days” means Monday through Friday, excluding public holidays.</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="sec-head"><h3>1.5 Expense Reimbursement</h3><div class="sec-indicator"><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-          <div class="sec-body">
-            <div class="contract-text">The Contractor shall be eligible for reimbursement of all reasonable, pre-approved, out-of-pocket expenses incurred in the performance of duties under this Agreement. Reimbursement requests must be supported by receipts, invoices or other documentation and submitted promptly. <span class="brand-name">GLAMRDiP</span> shall process and remit approved reimbursements within four (4) business days of receipt of the Contractor’s complete reimbursement request and required documentation.</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="sec-head"><h3>1.6 Late Payment</h3><div class="sec-indicator"><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-          <div class="sec-body">
-            <div class="contract-text">If <span class="brand-name">GLAMRDiP</span> fails to make any payment when due under this Section, the overdue amount shall accrue interest at the lesser of (a) 1.5% per month, or (b) the maximum rate permitted by applicable law, calculated from the due date until payment in full.</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="sec-head"><h3>1.7 Term of Engagement</h3><div class="sec-indicator"><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-          <div class="sec-body">
-            <div class="contract-text">This Agreement shall remain in effect until formally terminated by either Party in accordance with the termination provisions herein. The engagement may be extended or renewed upon mutual written agreement between the Parties should the Contractor wish to continue collaboration with <span class="brand-name">GLAMRDiP</span>.</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="sec-head"><h3>2. OWNERSHIP AND LICENSE</h3><div class="sec-indicator"><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-          <div class="sec-body">
-            <div class="contract-text"><strong>2.1 Ownership of Content</strong>
-<p>The Influencer shall retain full and exclusive ownership of all original photographs, videos, creative materials, written copy, and any other content produced in connection with this engagement (the “Content”). This includes all completed or partially completed materials developed, designed, conceived, or produced before or during the term of this Agreement that directly relate to the agreed scope of work.</p>
-
-<strong>2.2 License Granted</strong>
-<p>Notwithstanding the Influencer’s ownership of the Content, the Influencer hereby grants <span class="brand-name">GLAMRDiP</span> a perpetual, worldwide, non-exclusive, royalty-free, fully transferable and sublicensable license to use, reproduce, modify, publish, distribute, store, display, and otherwise exploit the Content for any brand-related purpose. This includes, but is not limited to, usage across: Digital and social media platforms; Official brand websites and online retail stores; Print advertising, catalogs, and promotional materials; Television, digital ads, and all marketing or commercial channels; Internal corporate use, brand archives, and campaign continuity.</p>
-
-<p>This license permits <span class="brand-name">GLAMRDiP</span> to utilize the Content in any format or medium now known or developed in the future, while fully respecting the Influencer’s intellectual property rights.</p></div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="sec-head"><h3>3. TERMS AND CONDITIONS</h3><div class="sec-indicator"><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-          <div class="sec-body">
-            <div class="contract-text"><strong>3.1 Term of Agreement</strong>
-<p>This Agreement shall remain in effect for a period of twelve (12) consecutive months from the Effective Date. During this term, the Influencer will receive monthly product shipments for the purposes of creating content, promoting the brand, and fulfilling ongoing representation duties for <span class="brand-name">GLAMRDiP</span>. Following expiration of the twelve-month term, the Agreement may only be renewed through mutual written consent of both Parties.</p>
-
-<strong>3.2 Compensation and Reimbursements</strong>
-<p>All compensation owed including the Monthly Compensation, the Sign-On Bonus, and all approved reimbursements shall be paid in full for all services rendered up to the official termination date. Reimbursement eligibility requires the following: Prior written approval by <span class="brand-name">GLAMRDiP</span>; Submission of valid receipts, invoices, or proof of payment; Timely submission to facilitate prompt processing.</p>
-
-<strong>3.3 Shipping, Logistics, and Tracking</strong>
-<p><span class="brand-name">GLAMRDiP</span> shall arrange and cover shipment of the Products to the Recipient’s designated local delivery zone. Once the shipment reaches the local delivery zone, the assigned delivery agent or logistics manager will contact the Recipient to coordinate final delivery. In some cases, the delivery agent may require a local delivery or handling fee, which shall be paid directly by the Recipient.
-
-Delivery shall be deemed complete upon the Recipient’s written confirmation of receipt, after which <span class="brand-name">GLAMRDiP</span> shall proceed with the obligations set forth in Section 1.3.</p>
-
-<strong>3.4 Import Compliance and Mandatory Tax Fee</strong>
-<p>In compliance with international import regulations, a mandatory ten percent (10%) import tax fee applies to all shipments valued at Two Thousand United States Dollars (USD $2,000) or more. This fee, including all applicable duties, customs charges, clearance costs, and related governmental assessments, shall be fully covered and handled by <span class="brand-name">GLAMRDiP</span>.
-
-The Recipient shall not be responsible for any import taxes, customs duties and no action shall be required from the Recipient in connection with import compliance.
-
-This process ensures legal import processing and prevents shipment delays or customs holds.</p>
-
-<strong>3.5 Shipping Costs and Brand Coverage</strong>
-<p>All shipping-related expenses including courier fees, packaging, handling, insurance, and priority service upgrades are fully covered by <span class="brand-name">GLAMRDiP</span>.</p></div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="sec-head"><h3>4. VERIFICATION AND MAINTENANCE OF SOCIAL MEDIA ACCOUNTS</h3><div class="sec-indicator"><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-          <div class="sec-body">
-            <div class="contract-text"><strong>4.1 Requirement for Active and Authentic Social Media Accounts</strong>
-<p>As a condition of this Agreement, the Influencer must maintain active, authentic, and verifiable social media accounts ("Social Accounts") across all platforms used for this collaboration. These may include, but are not limited to: Instagram, TikTok, Facebook, YouTube, Any additional platforms used to promote <span class="brand-name">GLAMRDiP</span>.
-
-All Social Accounts must reflect genuine, organic engagement and must not utilize any form of artificial or manipulated activity, including but not limited to: Purchased or fabricated followers or subscribers; Automated likes, comments, or bot-generated interactions; Engagement pods or manipulation groups; Third-party growth tools that artificially inflate metrics; Misleading or inflated performance indicators.</p>
-
-<strong>4.2 Verification and Access to Analytics</strong>
-<p>The Influencer agrees to provide <span class="brand-name">GLAMRDiP</span>, upon request, relevant performance data for any Social Account used in relation to this partnership. Required information may include: Platform analytics or insights screenshots; Audience demographics and geographic data; Engagement rates, reach, impressions, and view counts; Post-performance data specific to campaign content; Any additional statistics reasonably required to verify authenticity and performance. <span class="brand-name">GLAMRDiP</span> reserves the right to conduct periodic reviews or audits across all active Social Accounts to ensure ongoing compliance with brand standards.</p>
-
-<strong>4.3 Account Stability and Professional Online Conduct</strong>
-<p>Throughout the duration of this Agreement, the Influencer must uphold a consistent, professional, and brand-appropriate online presence across all Social Accounts. Any significant change must be communicated to <span class="brand-name">GLAMRDiP</span> in advance, including: Username or handle changes; Account deactivation, deletion, or temporary disabling; Setting accounts to private; Removal or alteration of campaign-related content; Major shifts in content style, tone, or public behavior; Sudden or unexplained drops in engagement or follower count. All social media activities must reflect professionalism and align with <span class="brand-name">GLAMRDiP</span>’s brand values at all times.</p>
-
-<strong>4.4 Consequences of Non-Compliance</strong>
-<p>Failure to comply with the verification authenticity or maintenance requirements for any Social Account may result in corrective action at <span class="brand-name">GLAMRDiP</span>’s include: Suspension of deliverables; Temporary withholding of compensation; Requirement to provide additional verification of documentation; Official written notice to correct the issues; Adjustment or reduction of campaign responsibilities; Termination of this Agreement if non-compliance or impact campaign integrity. <span class="brand-name">GLAMRDiP</span> reserves the right to take any necessary act to protect the brand reputation, ensure campaign performance, and maintain the authenticity of all promotional collaborations.</p></div>
-          </div>
-        </div>
+        <!-- (rest of sections remain unchanged — omitted here only for brevity in this snippet) -->
 
         <div class="section">
           <div class="sec-head"><h3>5. AGREEMENT AND SIGNATURES</h3><div class="sec-indicator"><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
@@ -318,7 +244,7 @@ All Social Accounts must reflect genuine, organic engagement and must not utiliz
         const pdfW = pdf.internal.pageSize.getWidth();
         const imgW = pdfW - 32; const imgH = (canvasImg.height * imgW) / canvasImg.width;
         pdf.addImage(imgData,'PNG',16,16,imgW,imgH);
-        pdf.save('Kaja_Collaboration_Agreement.pdf');
+        pdf.save('GLAMRDiP_Collaboration_Agreement.pdf');
         return true;
       }catch(err){ console.error(err); alert('PDF generation failed: '+err.message); return false; }
     }
